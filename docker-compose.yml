@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql
+    container_name: db
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=vollmed_api
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - spring-network
+    ports:
+      - "3307:3306"
+
+networks:
+  spring-network:
+    driver: bridge
